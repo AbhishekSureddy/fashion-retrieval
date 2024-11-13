@@ -14,5 +14,6 @@ class UniqloDataset(Dataset):
 
     def __getitem__(self, idx):
         temp = self.data[idx]
+        temp["idx"] = idx
         temp['image'] = Image.open(requests.get(self.data[idx]['img_url'], stream=True).raw)
         return temp
